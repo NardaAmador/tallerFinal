@@ -16,10 +16,11 @@ app.use(cors({
   //     callback(new Error('Not allowed by CORS'))
   //   }
   // },
-  origin: "*",
-  methods: ["GET", "POST", "PATCH", "PUT", "DETELE"],
-  exposedHeaders: ["Content-Type"],
-  optionsSuccessStatus: 200
+  
+origin: "*",
+methods: ["GET", "POST", "PATCH", "PUT", "DETELE"],
+exposedHeaders: ["Content-Type"],
+optionsSuccessStatus: 200
 }));
 
 //Configuración del servidor:
@@ -31,7 +32,7 @@ app.use(morgan('dev'));
 app.use(express.json());
 
 //Rutas:
-app.use('/data',require('./rutas/dataManagement.js'));
+app.use('/data', require('./rutas/dataManagement.js'));
 //Listener principal:
 app.listen(port, function () {
   console.log(`Servidor corriendo en puerto: ${port}`);
