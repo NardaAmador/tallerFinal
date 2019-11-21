@@ -34,8 +34,9 @@ router.get('/promocionesVigentes', async (req, res) => {
 //Se crea el direccionamiento de la ruta de la petición para obtener las promociones premium
 router.get('/obtenerPromocionesPremium', async (req, res) => {
 
+    let fechaHoy = new Date();
     //Se especifican los filtros de búsqueda por el atributo premium que tenga el valor de true (1) y un limit o máximo de 5 resultados
-    promociones.find({premium:true}).limit(5)
+    promociones.find({fechaExpiracion : {$gt : new Date(fechaHoy)}, premium:true}).limit(5)
     
     //Obtiene 5 promociones premium en el caso de que existan 5 en la DB
     .then((promosPremium) => {
